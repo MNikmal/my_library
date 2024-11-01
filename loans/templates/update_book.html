@@ -1,0 +1,12 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    My Library | Update Book
+{% endblock %}
+
+{% block content %}
+    <h1>Update Book</h1>
+    <form action="{% url 'update_book' book.pk %}" method="post">
+        {% include "__book_form.html" with form=form submit="Update" %}
+    </form>
+{% endblock %}

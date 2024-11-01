@@ -1,0 +1,15 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    My Library | Delete Book
+{% endblock %}
+
+{% block content %}
+    <h1>Delete Book</h1>
+    <form action="{% url 'delete_book' book.pk %}" method="post">
+        {% csrf_token %}
+        Are you sure you want to delete the book "{{ book.title }}" by {{ book.authors }}?
+        <input type="submit" value="Confirm">
+        <a href="{% url 'books' %}">Cancel</a>
+    </form>
+{% endblock %}

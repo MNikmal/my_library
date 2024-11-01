@@ -1,0 +1,12 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+    book
+{% endblock %}
+
+{% block content %}
+    {{ book }}
+        <a href="{% url 'books' %}">
+            <p>Go to list of books</p>
+        </a>
+{% endblock %}

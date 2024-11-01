@@ -1,0 +1,38 @@
+{% extends "base_page.html" %}
+
+{% block title %}
+My Library | Books
+{% endblock %}
+
+{% block content %}
+<h1>Books</h1>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+        <th scope="col">id</th>
+        <th scope="col">Reference</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>
+                {{ book.id }}
+            </td>
+            <td>
+                {{ book.authors }}  ({{ book.publication_date }})   "{{ book.title }}"
+                {% if book.isbn %}
+                    ISBN: {{ book.isbn }}
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'get_book' book.id %}"><i class="bi bi-eye-fill"></i></a>
+                <a href="{% url 'update_book' book.id %}"><i class="bi bi-pencil-fill"></i></a>
+                <a href="{% url 'delete_book' book.id %}"><i class="bi bi-trash-fill text-danger"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
